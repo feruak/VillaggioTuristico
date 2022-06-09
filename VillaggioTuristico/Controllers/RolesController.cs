@@ -20,17 +20,17 @@ namespace VillaggioTuristico.Controllers
             this.logger = logger;
         }
 
-        public IActionResult Index([FromServices] UserDBContext dBContext, string roleName)
-        {
-            UsersAndRolesViewModel model = new UsersAndRolesViewModel();
-            model.Roles = dBContext.Roles.Where(r =>
-            string.IsNullOrEmpty(roleName) ? r.Name != null : r.Name.Contains(roleName)).Select(r => new Role()
-            {
-                IdentityRole = r,
-                RoleClaims = dBContext.RoleClaims.Where(rc => rc.RoleId == r.Id).ToList()
-            }).ToList();
-            return View(model);
-        }
+        //public IActionResult Index([FromServices] UserDBContext dBContext, string roleName)
+        //{
+        //    UsersAndRolesViewModel model = new UsersAndRolesViewModel();
+        //    model.Roles = dBContext.Roles.Where(r =>
+        //    string.IsNullOrEmpty(roleName) ? r.Name != null : r.Name.Contains(roleName)).Select(r => new Role()
+        //    {
+        //        IdentityRole = r,
+        //        RoleClaims = dBContext.RoleClaims.Where(rc => rc.RoleId == r.Id).ToList()
+        //    }).ToList();
+        //    return View(model);
+        //}
 
         #region roles
         [HttpPost]

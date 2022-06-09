@@ -21,12 +21,17 @@
                         <input asp-for="@Model.Password" class="form-control" />
                     </div>
                     <input type="submit" class="btn btn-primary" value="Login" />
+        
+                    
                 </form>
             </div>
         </div>
     </div>
     }
-    else
+    else  
     {
-    <div>Sei già loggato</div>
+        <div>
+            <h1>qui si prenota</h1>
+        </div>
+        <a asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
     }
