@@ -42,7 +42,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Users<span class="sr-only">Users</span></a>
                     </li>
-                    @if (SignInManager.IsSignedIn(User))
+                    @if (@UserManager.GetUserName(User)=="Admin")
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="HiddenPage">Hidden Page</a>
