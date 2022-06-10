@@ -41,6 +41,10 @@ namespace VillaggioTuristico.Controllers
         {
             return View();
         }
+        public IActionResult Camere()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel loginModel)

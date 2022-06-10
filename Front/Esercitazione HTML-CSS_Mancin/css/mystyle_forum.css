@@ -1,0 +1,144 @@
+/*---------general----------*/
+html,body{height:100%}
+body {background: #eee;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.button {display: inline-block; background-color: #fff;color: #000; padding: 15px 15px; border-radius: 5px; text-decoration: none; }
+p{line-height: 22px;}
+a{color: rgb(9, 211, 211);}
+a:hover{color: darkcyan;}
+
+/*---------header----------*/
+.header { background-color: #333; position: fixed; z-index: 100; width: 100%;}
+.header_nome { color: #fff; float: left; display: block; padding: 20px; text-decoration: none;  }
+.header_menu {  float: right; margin: 0%;padding: 0%;}
+.header_menu-item { display: inline-block; }
+.header_menu-item a { color:  #fff; display: block; padding: 20px; text-decoration: none;border:1px solid #333; }
+.header_menu-item a:hover {color:darkcyan;}
+.header_menu-item-current { color:darkcyan; padding: 20px;}
+
+
+/*---------cover----------*/
+.cover{height: 70%; 
+background-image: url(../images/forum/mehrab-zahedbeigi-9Gv9oaqa6m0-unsplash.jpg);
+background-size: cover;
+-o-background-size: cover;
+-moz-background-size: cover;
+background-position: center center;
+position: relative;
+}
+
+.cover_filter{background-color: black; height: 100%; width: 100%; position: absolute; z-index: 0; opacity: 0.2;}
+.cover_caption { display: table; height: 100%; width: 100%; position: relative; z-index: 1;}
+.cover_caption_copy { display: table-cell; vertical-align: middle; text-align: center; color: #fff;}
+.cover_caption_copy h1{color: rgb(255, 255, 255); font-weight: bold; font-size: 30px; font-style: italic;}
+.cover_caption_copy h2{color: rgb(255, 255, 255); font-weight: normal; font-size: 20px; margin-top: -10px;}
+
+/*---------cards----------*/
+.cards{max-width: 1200px; margin: 40px auto;}
+.card{width: 30%; margin: 0 1.5%; background-color: #eee;float: left;}
+.card_image{width: 100%;height: 400px;}
+.card_copy{padding:5px  20px;}
+.card_copy h3{margin-bottom: 0;}
+
+/*---------banner----------*/
+.banner {background: #fff; height: 50%;}
+.banner_image{width: 30% ;float: left; height: 100%;
+    background-image: url(../images/forum/siarhei-palishchuk-l5QjpiLwJ_E-unsplash.jpg);
+    background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    background-position: center center;
+}
+
+.banner_copy{width: 70% ;float: left;height: 100%; display: table;  }
+.banner_copy_text{display: table-cell; vertical-align: middle; padding: 30px; }
+.banner_copy_text h3{font-size: 30px; margin-bottom: 0; }
+.banner_copy_text p{font-size: 15px; margin: 5px 0; }
+
+/*---------single----------*/
+.single {}
+.single_copy {max-width:800px ; margin:0px auto; margin-top: -40px;background-color: rgb(255, 255, 255); padding: 20px 40px;
+    position:relative;
+    z-index: 1;
+}
+.single_copy_cv {max-width:800px ; margin:0px auto; margin-top: -40px;background-color: rgb(255, 255, 255); padding: 20px 40px;
+    position:relative;
+    z-index: 1;
+}
+.single_copy_title{font-size: 25px;}
+.single_copy_meta{font-weight: bold; font-size: 18px; font-style: italic;}
+
+/*---------Tabella----------*/
+
+.table {
+    border: 1px solid #000000 ;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin: 0.5%;
+}
+
+.table tr, th, td {
+    font-weight:normal;
+    border: 1px solid #000000 ;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+.table_topic_title {     
+    background-color: #333;
+    color: rgb(255, 255, 255);   
+   
+    
+    
+}
+.table_topic_text {     
+    text-align: left; 
+    background-color: #f1f1f1;
+    color: #000;        
+    padding: 10px;
+    
+    
+}
+.table_topic_title h4 {
+    font-weight: normal;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    }
+.table_topic_title p {
+margin-bottom: 10px;
+}
+
+.table_title th{     
+   
+    background-color: #333;
+    color: rgb(255, 255, 255);   
+    
+}
+   
+.table_text td{
+    text-align: left; 
+    background-color: #f1f1f1;
+    color: #000;        
+    padding: 10px;
+   
+    }
+
+
+    
+
+/*---------Copiright----------*/
+.footer{background-color: #333;padding: 20px; color: #fff; margin-top: 20px;}
+
+/*---------clearfix----------*/
+  .clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+  * html .clearfix             { zoom: 1; } /* IE6 */
+  *:first-child+html .clearfix { zoom: 1; } /* IE7 */
