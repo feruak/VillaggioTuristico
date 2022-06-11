@@ -46,6 +46,109 @@ function showInformationModal(text) {
     $(".modal-footer").append(OKbutton);
     document.getElementById("modal").style.display = "block";
 }
+//<claims>
+function showConfirmationModalForClaims(url, data) {
+    document.getElementById("modal-header").innerText = data.addOrDelete + " claim ?";
+    questionP = document.createElement("p");
+    questionP.style.textAlign = "center";
+    questionP.innerText = data.addOrDelete + " claim ?";
+    document.getElementById("modal-body").appendChild(questionP);
+
+    OKbutton = document.createElement("button");
+    OKbutton.innerText = "OK";
+    OKbutton.id = "modalOKButton";
+    OKbutton.classList.add("btn");
+    OKbutton.classList.add("btn-primary");
+
+    if (data.addOrDelete == 'Add') {
+        claimTypeP = document.createElement("p");
+        claimTypeP.style.textAlign = "center";
+        claimTypeP.innerText = 'Claim Type';
+        document.getElementById("modal-body").appendChild(claimTypeP);
+        claimTypeTextArea = document.createElement("input");
+        claimTypeP.appendChild(claimTypeTextArea);
+
+        claimValueP = document.createElement("p");
+        claimValueP.style.textAlign = "center";
+        claimValueP.innerText = 'Claim Value';
+        document.getElementById("modal-body").appendChild(claimValueP);
+        claimValueTextArea = document.createElement("input");
+        claimValueP.appendChild(claimValueTextArea);
+
+        OKbutton.onclick = function () {
+            data.claimtype = claimTypeTextArea.value;
+            data.claimvalue = claimValueTextArea.value;
+            claimTypeTextArea.disabled = true;
+            claimValueTextArea.disabled = true;
+            ajaxCall(url, data);
+        }
+    }
+    else {
+        OKbutton.onclick = function () {
+            ajaxCall(url, data);
+        }
+    }
+    $(".modal-footer").append(OKbutton);
+    CancelButton = document.createElement("button");
+    CancelButton.innerText = "Cancel";
+    CancelButton.id = "modalCancelButton";
+    CancelButton.classList.add("btn");
+    CancelButton.classList.add("btn-danger");
+    CancelButton.onclick = function () {
+        hideModal();
+    }
+    $(".modal-footer").append(CancelButton);
+    document.getElementById("modal").style.display = "block";
+}
+//</claims>
+
+//<roles>
+function showConfirmationModalForRoles(url, data) {
+    document.getElementById("modal-header").innerText = data.addOrDelete + " role ?";
+    questionP = document.createElement("p");
+    questionP.style.textAlign = "center";
+    questionP.innerText = data.addOrDelete + " role ?";
+    document.getElementById("modal-body").appendChild(questionP);
+
+    OKbutton = document.createElement("button");
+    OKbutton.innerText = "OK";
+    OKbutton.id = "modalOKButton";
+    OKbutton.classList.add("btn");
+    OKbutton.classList.add("btn-primary");
+
+    if (data.addOrDelete == 'Add') {
+        RoleNameP = document.createElement("p");
+        RoleNameP.style.textAlign = "center";
+        RoleNameP.innerText = 'Role Name';
+        document.getElementById("modal-body").appendChild(RoleNameP);
+        RoleNameTextArea = document.createElement("input");
+        RoleNameP.appendChild(RoleNameTextArea);
+
+        OKbutton.onclick = function () {
+            data.roleName = RoleNameTextArea.value;
+            RoleNameTextArea.disabled = true;
+            ajaxCall(url, data);
+        }
+    }
+    else {
+        OKbutton.onclick = function () {
+            ajaxCall(url, data);
+        }
+    }
+    $(".modal-footer").append(OKbutton);
+    CancelButton = document.createElement("button");
+    CancelButton.innerText = "Cancel";
+    CancelButton.id = "modalCancelButton";
+    CancelButton.classList.add("btn");
+    CancelButton.classList.add("btn-danger");
+    CancelButton.onclick = function () {
+        hideModal();
+    }
+    $(".modal-footer").append(CancelButton);
+    document.getElementById("modal").style.display = "block";
+}
+//</roles>
+
 
 //<users>
 function showConfirmationModalForUsers(url, data) {
