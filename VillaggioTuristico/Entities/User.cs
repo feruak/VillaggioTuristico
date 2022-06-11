@@ -10,9 +10,5 @@ namespace VillaggioTuristico.Entities
 {
     public class User : IdentityUser
     {
-        [NotMapped]
-        public List<Role> UserRoles { get; set; }
-        [NotMapped]
-        public List<IdentityUserClaim<string>> UserClaims { get; set; }
     }
 }

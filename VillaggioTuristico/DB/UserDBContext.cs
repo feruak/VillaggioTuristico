@@ -1,12 +1,13 @@
 ﻿using VillaggioTuristico.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using VillaggioTuristico.DB.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace VillaggioTuristico.Contexts
+namespace VillaggioTuristico.DB
 {
     public class UserDBContext : IdentityDbContext<User>
     {
@@ -14,6 +15,8 @@ namespace VillaggioTuristico.Contexts
             : base(options)
         {
         }
+
+        public DbSet<Prenotazione> ElencoPrenotazioni { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

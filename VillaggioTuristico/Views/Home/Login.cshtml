@@ -31,7 +31,10 @@
     else  
     {
         <div>
-            <h1>qui si prenota</h1>
+            Camera: <input type="text" id="prenotationCamera" /><br/>
+            Periodo: <input type="text" id="prenotationPeriodo" /> 
+
+            <button onclick="insertPrenotation()" class="btn btn-primary">Prenota</button>
         </div>
         <a asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
     }

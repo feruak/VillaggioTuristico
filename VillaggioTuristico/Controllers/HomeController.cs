@@ -8,27 +8,36 @@ using Microsoft.Extensions.Logging;
 using VillaggioTuristico.Models;
 using Microsoft.AspNetCore.Identity;
 using VillaggioTuristico.Entities;
-using VillaggioTuristico.Contexts;
 using VillaggioTuristico.Commons;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using VillaggioTuristico.DB;
+using VillaggioTuristico.DB.Entities;
 
 namespace VillaggioTuristico.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> logger;
+        private readonly Repository repository;
         private SignInManager<User> signInManager;
         private UserManager<User> userManager;
         private UserDBContext dbContext;
 
         public HomeController(SignInManager<User> signInManager,
             UserManager<User> userManager,
-            UserDBContext dbContext)
+            UserDBContext dbContext,
+             Repository repository)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.dbContext = dbContext;
+            this.repository = repository;
+        }
+
+        public IActionResult Index()
+        {
+            return View();
         }
 
         [Authorize]
@@ -84,27 +93,20 @@ namespace VillaggioTuristico.Controllers
             return Redirect("Index");
         }
 
-        public IActionResult Index([FromServices] UserDBContext dBContext, string userName, string email)
+        public IActionResult Prenotation()
         {
-            UsersAndRolesViewModel model = new UsersAndRolesViewModel();
-            model.Users = dBContext.Users.Where(u =>
-            (string.IsNullOrEmpty(userName) ? u.UserName != null : u.UserName.Contains(userName))
-            &&
-            (string.IsNullOrEmpty(email) ? true : u.Email != null && u.Email.Contains(email))
-            ).Select(u => new User()
-            {
-                Id = u.Id,
-                Email = u.Email,
-                UserName = u.UserName,
-                UserRoles = (from r in dBContext.Roles
-                             join ur in dBContext.UserRoles.Where(ur => ur.UserId == u.Id) on r.Id equals ur.RoleId
-                             select new Role()
-                             {
-                                 IdentityRole = r,
-                                 RoleClaims = dBContext.RoleClaims.Where(rc => rc.RoleId == r.Id).ToList()
-                             }).ToList(),
-                UserClaims = dBContext.UserClaims.Where(uc => uc.UserId == u.Id).ToList()
-            }).ToList();
+            string username = User.Identity.Name;
+            List<Prenotazione> prenotations = this.repository.GetPrenotation();
+            prenotations = prenotations.Where(p => p.Utente == username).ToList();
+            List<PrenotationModel> model = new List<PrenotationModel>();
+            foreach (Prenotazione p in prenotations)
+                model.Add(new PrenotationModel()
+                {
+                    Id = p.ID.Value.ToString(),
+                    Utente = p.Utente,
+                    Camera =p.Camera.ToString(),
+                    Periodo = p.Periodo.ToString()
+                });
             return View(model);
         }
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VillaggioTuristico.Commons;
-using VillaggioTuristico.Contexts;
 using VillaggioTuristico.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using VillaggioTuristico.DB;
 
 namespace VillaggioTuristico
 {
@@ -39,6 +39,8 @@ namespace VillaggioTuristico
             services.AddScoped<SignInManager<User>>();
             services.AddScoped<UserManager<User>>();
             services.AddScoped<RoleManager<IdentityRole>>();
+
+            services.AddScoped<Repository>();
 
             services.Configure<SecurityStampValidatorOptions>(options =>
             {
