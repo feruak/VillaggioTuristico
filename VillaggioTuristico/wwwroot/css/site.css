@@ -71,8 +71,10 @@ body {
 /*}*/
 
 
+
 /*---------general----------*/
 /*---------inizio----------*/
+
 html, body {
     height: 100%
 }
@@ -105,6 +107,7 @@ a {
     }
 
 /*---------header----------*/
+
 .header {
     background-color: #333;
     position: fixed;
@@ -149,22 +152,29 @@ a {
 
 
 /*---------cover----------*/
-.cover {
-    height: 70%;
-    background-image: url(../images/index/siarhei-palishchuk-l5QjpiLwJ_E-unsplash.jpg);
+.cover_index {
+    width: 100%;
+    height: 500px;
+    background-image: url(../images/xhulio-selenica-dfHKE1Gxaw0-unsplash.jpg);
     background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
     background-position: center center;
     position: relative;
 }
+
+.cover_camere {
+    width: 100%;
+    height: 500px;
+    background-image: url(../images/sidekix-media-jXg86doR9no-unsplash.jpg);
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
 
 .cover_home {
     height: 70%;
     background-image: url(../images/home/ricardo-gomez-angel-dEtMGTcgytU-unsplash.jpg);
     background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
     background-position: center center;
     position: relative;
 }
@@ -193,21 +203,23 @@ a {
     color: #fff;
 }
 
-    .cover_caption_copy h1 {
-        color: rgb(255, 255, 255);
-        font-weight: bold;
-        font-size: 30px;
-        font-style: italic;
-    }
+.cover_caption_copy h1 {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 30px;
+    font-style: italic;
+}
 
-    .cover_caption_copy h2 {
-        color: rgb(255, 255, 255);
-        font-weight: normal;
-        font-size: 20px;
-        margin-top: -10px;
-    }
+.cover_caption_copy h2 {
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    font-size: 20px;
+    margin-top: -10px;
+}
 
-/*---------cards----------*/
+
+
+/*---------cards---------*/
 .cards {
     max-width: 1200px;
     margin: 40px auto;
@@ -230,45 +242,73 @@ a {
     padding: 5px 20px;
 }
 
-    .card_copy h3 {
-        margin-top: 5px;
-        margin-bottom: 2px;
-        font-size: 18px;
-    }
+.card_copy h3 {
+    margin-top: 5px;
+    margin-bottom: 2px;
+    font-size: 18px;
+}
 
-    .card_copy p {
-        margin-top: 5px;
-        margin-bottom: 2px;
-        font-size: 15px;
-    }
+.card_copy p {
+    margin-top: 5px;
+    margin-bottom: 2px;
+    font-size: 15px;
+}
 
-/*---------banner----------*/
+/*---------banner--------*/
 .banner {
     background: #fff;
-    height: 50%;
+    height: 200px;
+    margin-top: 20px;
+
 }
 
-.banner_image {
+
+.banner_image_index_1 {
     width: 30%;
     float: left;
     height: 100%;
-    background-image: url(../images/index/hans-isaacson-LRfDMRmNcx8-unsplash.jpg);
+    background-image: url(../images/siddharth-shah-7kr71wjlYRQ-unsplash.jpg);
     background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
     background-position: center center;
+    z-index: 10;
 }
 
-.banner_image_index {
+.banner_image_index_2 {
     width: 30%;
     float: left;
     height: 100%;
-    background-image: url(../images/index/iewek-gnos-2BDfBblp1Co-unsplash.jpg);
+    background-image: url(../images/jonathan-mueller-meY-MPjJk0k-unsplash.jpg);
     background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
     background-position: center center;
 }
+
+.banner_image_camere_1 {
+    width: 30%;
+    float: left;
+    height: 100%;
+    background-image: url(../images/or-hakim-6R4Ypku85wY-unsplash.jpg);
+    background-size: cover;
+    background-position: center center;
+    z-index: 10;
+}
+
+.banner_image_camere_2 {
+    width: 30%;
+    float: left;
+    height: 100%;
+    background-image: url(../images/lianhao-qu-wW5mTigVQPI-unsplash.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+.banner_image_camere_3 {
+    width: 30%;
+    float: left;
+    height: 100%;
+    background-image: url(../images/mathilde-langevin--a9UfepydQA-unsplash.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
 
 .banner_copy {
     width: 70%;
@@ -283,17 +323,17 @@ a {
     padding: 30px;
 }
 
-    .banner_copy_text h3 {
-        font-size: 30px;
-        margin-bottom: 0;
-    }
+.banner_copy_text h3 {
+    font-size: 30px;
+    margin-bottom: 0;
+}
 
-    .banner_copy_text p {
-        font-size: 15px;
-        margin: 5px 0;
-    }
+.banner_copy_text p {
+    font-size: 15px;
+    margin: 5px 0;
+}
 
-/*---------single----------*/
+/*---------single--------*/
 .single {
 }
 
@@ -307,17 +347,17 @@ a {
     z-index: 1;
 }
 
-    .single_copy h2 {
-        font-size: 18px;
-        margin-top: 5px;
-        margin-bottom: 2px;
-    }
+.single_copy h2 {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
 
-    .single_copy p {
-        font-size: 15px;
-        margin-top: 5px;
-        margin-bottom: 2px;
-    }
+.single_copy p {
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
 
 
 /*---------Copiright----------*/
