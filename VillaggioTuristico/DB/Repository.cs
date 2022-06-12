@@ -1,8 +1,7 @@
-﻿using VillaggioTuristico.DB.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using VillaggioTuristico.Entities;
 
 namespace VillaggioTuristico.DB
 {
@@ -15,7 +14,6 @@ namespace VillaggioTuristico.DB
         }
         public List<Prenotazione> GetPrenotation()
         {
-            //select * from persons
             List<Prenotazione> result = this.DBContext.ElencoPrenotazioni.ToList();
             return result;
         }

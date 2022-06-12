@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using VillaggioTuristico.DB;
-using VillaggioTuristico.DB.Entities;
 using VillaggioTuristico.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VillaggioTuristico.Entities;
 
 namespace VillaggioTuristico.Controllers
 {
@@ -32,5 +32,9 @@ namespace VillaggioTuristico.Controllers
             this.repository.InsertPerson(prenotation);
             return Ok();
         }
+
+
+
+
     }
 }

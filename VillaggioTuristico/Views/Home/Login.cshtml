@@ -9,20 +9,18 @@
     @if (!SignInManager.IsSignedIn(User))
     {
     <div class="container">
-        <div class="row">
-            <div class="col-6">
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-6 p-3 m-3 bg-light border border-secondary rounded shadow">
                 <form asp-action="Login" asp-controller="Home" method="post" style="text-align:center">
                     <div class="form-group">
                         <label asp-for="@Model.UserName"></label>
-                        <input asp-for="@Model.UserName" class="form-control" />
+                        <input type="text" class="form-control" placeholder="Inserisci il tuo nome utente" asp-for="@Model.UserName" />
                     </div>
                     <div class="form-group">
                         <label asp-for="@Model.Password"></label>
-                        <input asp-for="@Model.Password" class="form-control" />
+                        <input type="password" class="form-control" placeholder="Inserisci password" asp-for="@Model.Password"/>
                     </div>
-                    <input type="submit" class="btn btn-primary" value="Login" />
-        
-                    
+                    <input type="submit" class="btn btn-primary btn-lg" value="Login" />
                 </form>
             </div>
         </div>
@@ -30,11 +28,24 @@
     }
     else  
     {
-        <div>
-            Camera: <input type="text" id="prenotationCamera" /><br/>
-            Periodo: <input type="text" id="prenotationPeriodo" /> 
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-6 p-3 m-3 bg-light border border-secondary rounded shadow">
+                <h1 class="text-center">Prenotazione</h1>
+                <form style="text-align:center">
+                    <div class="form-group">
+                        <label for="prenotationCamera">Camera:</label>
+                        <input type="text" class="form-control" placeholder="Inserisci il numero della camera" id="prenotationCamera" />
+                    </div>
+                    <div class="form-group">
+                        <label for="prenotationPeriodo">Periodo:</label>
+                        <input type="text" class="form-control" placeholder="Inserisci il periodo" id="prenotationPeriodo" />
+                    </div>
+                    <input type="submit" class="btn btn-success btn-lg" onclick="insertPrenotation()" value="Prenota" />
+                </form>
 
-            <button onclick="insertPrenotation()" class="btn btn-primary">Prenota</button>
+            </div>
         </div>
-        <a asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+
+    </div>
     }
