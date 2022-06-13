@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Area Utente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model LoginModel
+@using Microsoft.AspNetCore.Identity
+@using VillaggioTuristico.Entities
+@inject SignInManager<User> SignInManager
+        <div>
+            <div id="resultDiv"></div>
+        </div>

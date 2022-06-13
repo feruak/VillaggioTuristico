@@ -41,7 +41,7 @@ namespace VillaggioTuristico.Controllers
         }
 
         [Authorize]
-        public IActionResult HiddenPage()
+        public IActionResult AdminPage()
         {
             return View();
         }
@@ -54,6 +54,19 @@ namespace VillaggioTuristico.Controllers
         {
             return View();
         }
+        public IActionResult Prenotazione()
+        {
+            return View();
+        }
+        public IActionResult AreaUtente()
+        {
+            return View();
+        }
+        public IActionResult Registrazione()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel loginModel)
@@ -91,23 +104,6 @@ namespace VillaggioTuristico.Controllers
             {
             }
             return Redirect("Index");
-        }
-
-        public IActionResult Prenotation()
-        {
-            string username = User.Identity.Name;
-            List<Prenotazione> prenotations = this.repository.GetPrenotation();
-            prenotations = prenotations.Where(p => p.Utente == username).ToList();
-            List<PrenotationModel> model = new List<PrenotationModel>();
-            foreach (Prenotazione p in prenotations)
-                model.Add(new PrenotationModel()
-                {
-                    Id = p.ID.Value.ToString(),
-                    Utente = p.Utente,
-                    Camera =p.Camera.ToString(),
-                    Periodo = p.Periodo.ToString()
-                });
-            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

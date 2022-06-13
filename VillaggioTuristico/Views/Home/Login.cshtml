@@ -6,8 +6,6 @@
 @using Microsoft.AspNetCore.Identity
 @using VillaggioTuristico.Entities
 @inject SignInManager<User> SignInManager
-    @if (!SignInManager.IsSignedIn(User))
-    {
     <div class="container">
         <div class="row">
             <div class="col-6">
@@ -21,20 +19,7 @@
                         <input asp-for="@Model.Password" class="form-control" />
                     </div>
                     <input type="submit" class="btn btn-primary" value="Login" />
-        
-                    
                 </form>
             </div>
         </div>
     </div>
-    }
-    else  
-    {
-        <div>
-            Camera: <input type="text" id="prenotationCamera" /><br/>
-            Periodo: <input type="text" id="prenotationPeriodo" /> 
-
-            <button onclick="insertPrenotation()" class="btn btn-primary">Prenota</button>
-        </div>
-        <a asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
-    }

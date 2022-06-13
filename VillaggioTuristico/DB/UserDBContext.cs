@@ -17,6 +17,7 @@ namespace VillaggioTuristico.DB
         }
 
         public DbSet<Prenotazione> ElencoPrenotazioni { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

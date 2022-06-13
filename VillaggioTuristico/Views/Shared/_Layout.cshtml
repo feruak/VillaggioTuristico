@@ -74,10 +74,10 @@
                     }
 
                     @*Area Personale Admin*@
-                    @if (SignInManager.IsSignedIn(User)) // qui ci sarebbe da mettere IsSignedIn(Admin)
+                    @if (User.IsInRole("Admin")) 
                     {
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="HiddenPage">Admin Page</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="AdminPage">Admin Page</a>
                         </li>
                     }
 

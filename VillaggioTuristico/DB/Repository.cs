@@ -19,7 +19,7 @@ namespace VillaggioTuristico.DB
             List<Prenotazione> result = this.DBContext.ElencoPrenotazioni.ToList();
             return result;
         }
-        public void InsertPerson(Prenotazione prenotation)
+        public void InsertPrenotation(Prenotazione prenotation)
         {
             try
             {
