@@ -66,8 +66,10 @@ function prenotazioniUser() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data, status) {
+            console.log(data)
             for (var i = 0; i < data.length; i++) {
-                $("#resultDiv").append("<br/><div>" + "Camera:" + data[i].camera + "Periodo:" + data[i].periodo + "</div>");
+                
+                $("#resultDivUserPage").append("<br/><div>" + "Camera:" + data[i].camera + "Periodo:" + data[i].periodo + "</div>");
             }
         },
         error: function (error, status) {
@@ -139,9 +141,7 @@ function elencoPeriodi() {
         });
     }
     $(document).ready(function() {
-    prenotazioniUser();
     elencoPeriodi();
     elencoCamere();
-    prenotazioniAdmin()
     });
 

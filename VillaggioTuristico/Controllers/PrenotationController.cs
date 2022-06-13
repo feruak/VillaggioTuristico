@@ -41,7 +41,7 @@ namespace VillaggioTuristico.Controllers
             foreach (Prenotazione p in prenotations)
                 model.Add(new PrenotationModel()
                 {
-                    Id = p.ID.Value.ToString(),
+                    Id = p.ID,
                     Utente = p.Utente,
                     Camera = p.Camera.ToString(),
                     Periodo = p.Periodo.ToString()
@@ -58,7 +58,7 @@ namespace VillaggioTuristico.Controllers
             foreach (Prenotazione p in prenotations)
                 model.Add(new PrenotationModel()
                 {
-                    Id = p.ID.Value.ToString(),
+                    Id = p.ID,
                     Utente = p.Utente,
                     Camera = p.Camera.ToString(),
                     Periodo = p.Periodo.ToString()

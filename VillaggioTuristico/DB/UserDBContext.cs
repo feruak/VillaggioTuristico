@@ -1,6 +1,7 @@
 ﻿using VillaggioTuristico.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using VillaggioTuristico.DB.Entities;
 
 namespace VillaggioTuristico.DB
 {

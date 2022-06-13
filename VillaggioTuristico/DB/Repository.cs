@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using VillaggioTuristico.DB.Entities;
 using VillaggioTuristico.Entities;
 
 namespace VillaggioTuristico.DB
