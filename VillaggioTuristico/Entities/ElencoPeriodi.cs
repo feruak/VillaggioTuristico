@@ -7,7 +7,7 @@ namespace VillaggioTuristico.DB.Entities
     {
         [Key]
         public int Periodo { get; set; }
-        public string Inizio { get; set; }
-        public string Fine { get; set; }
+        public DateTime Inizio { get; set; }
+        public DateTime Fine { get; set; }
     }
 }

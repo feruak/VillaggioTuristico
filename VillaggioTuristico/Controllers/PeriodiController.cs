@@ -30,8 +30,8 @@ namespace VillaggioTuristico.Controllers
             foreach (ElencoPeriodi p in periodi)
                 model.Add(new PeriodiModel()
                 {
-                    Inizio = p.Inizio,
-                    Fine = p.Fine,
+                    Inizio = p.Inizio.ToLongDateString(),
+                    Fine = p.Fine.ToLongDateString(),
                     Periodo = p.Periodo
                 });
             return (model);

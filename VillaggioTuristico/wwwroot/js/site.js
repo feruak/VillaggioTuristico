@@ -6,10 +6,8 @@
 }
 function insertPrenotation() {
     var body = {};
-    body.Prenotazione = $('#prenotationPrenotazione').val();
-    body.Utente = $('#prenotationUtente').val();
-    body.Camera = $('#prenotationCamera').val();
-    body.Periodo = $('#prenotationPeriodo').val();
+    body.Camera = $('#camere').val();
+    body.Periodo = $('#periodi').val();
     $.ajax({
         method: "POST",
         url: "/api/Prenotation",
@@ -78,8 +76,8 @@ function elencoPeriodi() {
         dataType: "json",
         success: function (data, status) {
             for (var i = 0; i < data.length; i++) {
-                console.log(data[i])
-                //$("#periodi").append("<option value=" + data[i].periodo + ">" + data[i].periodo + "</option>")
+                //console.log(data[i])
+                $("#periodi").append("<option value=" + data[i].periodo + ">" + data[i].periodo + "</option>")
             }
         },
         error: function (error, status) {
