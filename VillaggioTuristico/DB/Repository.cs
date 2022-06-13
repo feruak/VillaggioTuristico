@@ -15,8 +15,19 @@ namespace VillaggioTuristico.DB
         }
         public List<Prenotazione> GetPrenotation()
         {
-            //select * from persons
             List<Prenotazione> result = this.DBContext.ElencoPrenotazioni.ToList();
+            return result;
+        }
+
+        public List<ElencoPeriodi> GetPeriodi()
+        {
+            List<ElencoPeriodi> result = this.DBContext.ElencoPeriodi.ToList();
+            return result;
+        }
+
+        public List<ElencoCamere> GetCamere()
+        {
+            List<ElencoCamere> result = this.DBContext.ElencoCamere.ToList();
             return result;
         }
         public void InsertPrenotation(Prenotazione prenotation)

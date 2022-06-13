@@ -161,6 +161,7 @@ a {
     position: relative;
 }
 
+
 .cover_camere {
     width: 100%;
     height: 500px;
@@ -206,17 +207,17 @@ a {
 .cover_caption_copy h1 {
     color: rgb(255, 255, 255);
     font-weight: bold;
-    font-size: 30px;
+    font-size: 100px;
     font-style: italic;
 }
 
 .cover_caption_copy h2 {
     color: rgb(255, 255, 255);
     font-weight: normal;
-    font-size: 20px;
+    font-size: 30px;
     margin-top: -10px;
+    font-style: italic;
 }
-
 
 
 /*---------cards---------*/
@@ -231,6 +232,15 @@ a {
     background-color: rgb(255, 255, 255);
     float: left;
     height: 700px;
+}
+
+
+.card_camere {
+    width: 30%;
+    margin: 0 1.5%;
+    background-color: rgb(255, 255, 255);
+    float: left;
+    height: 550px;
 }
 
 .card_image {
@@ -277,7 +287,7 @@ a {
     width: 30%;
     float: left;
     height: 100%;
-    background-image: url(../images/jonathan-mueller-meY-MPjJk0k-unsplash.jpg);
+    background-image: url(../images/stephen-leonardi-0CmzBbw5OCQ-unsplash.jpg);
     background-size: cover;
     background-position: center center;
 }
@@ -286,11 +296,12 @@ a {
     width: 30%;
     float: left;
     height: 100%;
-    background-image: url(../images/or-hakim-6R4Ypku85wY-unsplash.jpg);
+    background-image: url(../images/sidekix-media-2dToycYRNwY-unsplash.jpg);
     background-size: cover;
     background-position: center center;
     z-index: 10;
 }
+
 
 .banner_image_camere_2 {
     width: 30%;
