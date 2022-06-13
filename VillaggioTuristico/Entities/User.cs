@@ -10,5 +10,6 @@ namespace VillaggioTuristico.Entities
 {
     public class User : IdentityUser
     {
+
     }
 }

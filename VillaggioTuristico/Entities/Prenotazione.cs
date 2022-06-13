@@ -1,7 +1,6 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace VillaggioTuristico.DB.Entities
+namespace VillaggioTuristico.Entities
 {
     public class Prenotazione
     {

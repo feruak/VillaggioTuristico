@@ -3,6 +3,11 @@
 @inject UserManager<User> UserManager
 @inject SignInManager<User> SignInManager
 
+@inject VillaggioTuristico.DB.UserDBContext userDBContext
+
+@model VillaggioTuristico.Models.UsersAndRolesViewModel
+@inject RoleManager<IdentityRole> RoleManager
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +21,11 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>*@
 
 
-     <link rel="stylesheet" href="~/css/site.css" />
-    <link href="~/css/modal.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    @*<link href="~/css/modal.css" rel="stylesheet" />*@
 </head>
 <body>
+    @*
     <!-- <CreateUserModal> -->
     <div class="container">
         <div class="row">
@@ -36,7 +42,7 @@
             </div>
         </div>
     </div>
-    <!-- </CreateUserModal> -->
+    <!-- </CreateUserModal> -->*@
 
     <!-- <navbar> -->
 
@@ -49,74 +55,105 @@
                 <ul class="navbar-nav mr-auto">
                     @*Home*@
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
 
                     @*Camere*@
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Camere">Camere</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Camere">Camere</a>
                     </li>
 
                     @*Prenotazione*@
-                    @if (SignInManager.IsSignedIn(User))
+                    @if (SignInManager.IsSignedIn(User) && !User.IsInRole("Admin"))
                     {
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Prenotazione">Prenotazione</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Login">Prenotazione</a>
                         </li>
                     }
 
-                    @*Area Personale Utente*@
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="AreaUtente">Area Utente</a>
-                        </li>
-                    }
-
-                    @*Area Personale Admin*@
-                    @if (User.IsInRole("Admin")) 
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="AdminPage">Admin Page</a>
-                        </li>
-                    }
-
-                    @*Login*@
-                    @if (!SignInManager.IsSignedIn(User))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
-                        </li>
-                    }
-
-                    @*Logout*@
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
-                        </li>
-                    }
-                    
-                    @*Username a destra della navbar quando l'utente è loggato*@
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        <li class="nav navbar-nav navbar-right">
-                            <a class="navItem">@UserManager.GetUserName(User)</a>
-                        </li>
-                    }
                 </ul>
 
                 @*Create User button*@
                 @if (!SignInManager.IsSignedIn(User))
                 {
-                    <button id="CreateUserButton" class="btn btn-success me-3" onclick="    showConfirmationModalForUsers('@Url.Action("CreateUser", "Home")', { addOrDelete: 'Add' });">Create User</button>
+                    <!-- <button id="CreateUserButton" class="btn btn-success me-3" onclick="    showConfirmationModalForUsers('@Url.Action("CreateUser", "Home")', { addOrDelete: 'Add' });">Create User</button> -->
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#CreateUserModal">
+                        Registrati
+                    </button>
                 }
+
+                <!-- Create User modal -->
+                <div class="modal fade" id="CreateUserModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Registrati</h4>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body bg-light border border-secondary rounded m-3" id="CreateUserModalBody">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="InputUserName" class="form-label">UserName</label>
+                                        <input type="text" class="form-control" id="InputUserName">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="InputEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="InputEmail">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="InputPassword" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="InputPassword">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="InputConfirmPassword" class="form-label">Conferma password</label>
+                                        <input type="password" class="form-control" id="InputConfirmPassword">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" onclick="ajaxCallCreateUser('@Url.Action("CreateUser", "Home")')" data-dismiss="modal">Registrati</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Chiudi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*Login*@
+                @if (!SignInManager.IsSignedIn(User))
+                {
+                    <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+
+                }
+
+                @*Nome utente loggato a destra, cliccabile per UserPage*@
+                @if (SignInManager.IsSignedIn(User) && !User.IsInRole("Admin"))
+                {
+                    <a class="nav-link text-primary" asp-area="" asp-controller="Home" asp-action="UserPage">@UserManager.GetUserName(User)</a>
+
+                }
+
+                @*Admin loggato a destra, cliccabile per AdminPage*@
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <a class="nav-link text-primary" asp-area="" asp-controller="Home" asp-action="AdminPage">@UserManager.GetUserName(User)</a>
+
+                }
+
+                @*Logout*@
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                }
+
             </div>
         </nav>
     </header>
     <!-- </navbar> -->
-
-
 
     <div class="container-fluid" style="padding:0px " >
         <main role="main" class="pb-3 d-flex flex-column min-vh-100">

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Area riservata amministratore";
+    ViewData["Title"] = "Area riservata utente";
 }
 
 <div class="container">
@@ -8,12 +8,13 @@
             <h1>@ViewData["Title"]</h1>
         </div>
         <div class="col-sm-12 p-3 text-center">
-            <button class="btn btn-primary btn-lg" onclick="prenotazioniAdmin()">Stampa prenotazioni</button>
+            <button class="btn btn-primary btn-lg" onclick="ajaxCallGetAllPrenotations('@Url.Action("GetUserPrenotations", "Home")')">Stampa prenotazioni</button>
         </div>
     </div>
     <div class="row d-flex justify-content-center">
         <div class="col-sm-6">
-            <div id="listaPrenotazioni">
+            <div id="resultDivUserPage">
+                @*popolato da ajaxCallGetUserPrenotations*@
             </div>
         </div>
     </div>
