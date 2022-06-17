@@ -5,11 +5,11 @@ namespace VillaggioTuristico.DB.Entities
 {
     public class ElencoCamere
     {
-        
+        [Key]
         public string Tipologia { get; set; }
 
 
-        [Key]
+        
         public int Camera { get; set; }
         
     }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VillaggioTuristico.Entities;
+using VillaggioTuristico.DB.Entities;
 
 namespace VillaggioTuristico.Controllers
 {
@@ -27,9 +28,15 @@ namespace VillaggioTuristico.Controllers
             prenotation.Utente = User.Identity.Name;
             prenotation.Tipologia = model.Tipologia;
 
+            ElencoCamere elencoCamere = new ElencoCamere();
+
+            
+
             this.repository.InsertPrenotation(prenotation);
+            
             return Ok();
         }
+
         [HttpGet("ListaPrenotazioni")]
         public async Task<List<PrenotationModel>> Prenotation()
         {

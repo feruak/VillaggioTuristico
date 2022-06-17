@@ -8,8 +8,8 @@
 // Inserimento prenotazione
 function insertPrenotation() {
     var body = {};
-    //body.Camera = $('#camere').val();
-    body.Tipolologia = $('#tipologia').val();
+
+    body.Tipologia = $('#tipologia').val();
     $.ajax({
         method: "POST",
         url: "/api/Prenotation/InsertPrenotation",
