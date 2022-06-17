@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using VillaggioTuristico.DB;
 
+
 namespace VillaggioTuristico.Controllers
 {
     public class HomeController : Controller
@@ -59,6 +60,18 @@ namespace VillaggioTuristico.Controllers
         {
             return View();
         }
+        public IActionResult Prenotazione()
+        {
+            return View();
+        }
+        public IActionResult AreaUtente()
+        {
+            return View();
+        }
+        public IActionResult Registrazione()
+        {
+            return View();
+        }
 
         // Create User
         [HttpPost("CreateUser")]
@@ -95,24 +108,13 @@ namespace VillaggioTuristico.Controllers
             }
             return Json("Richiesta non valida.");
         }
-        public IActionResult Prenotazione()
-        {
-            return View();
-        }
-        public IActionResult AreaUtente()
-        {
-            return View();
-        }
-        public IActionResult Registrazione()
-        {
-            return View();
-        }
+        
 
         // Login
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
-            try
+            try 
             {
                 User user = await userManager.FindByNameAsync(loginModel.UserName);
                 if (user != null)
@@ -128,7 +130,7 @@ namespace VillaggioTuristico.Controllers
             {
 
             }
-            return Redirect("Index");
+                return Redirect("Login");
         }
 
         // Logout

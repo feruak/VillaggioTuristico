@@ -7,10 +7,10 @@ namespace VillaggioTuristico.Models
 {
     public class PrenotationModel
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public string Utente { get; set; }
-        public string Camera { get; set; }
-        public string Periodo { get; set; }
+        //public int Camera { get; set; }
+        public string Tipologia { get; set; }
     }
 }
 

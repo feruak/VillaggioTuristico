@@ -8,11 +8,11 @@
 // Inserimento prenotazione
 function insertPrenotation() {
     var body = {};
-    body.Camera = $('#camere').val();
-    body.Periodo = $('#periodi').val();
+    //body.Camera = $('#camere').val();
+    body.Tipolologia = $('#tipologia').val();
     $.ajax({
         method: "POST",
-        url: "/api/Prenotation",
+        url: "/api/Prenotation/InsertPrenotation",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(body),
         dataType: "json",
@@ -66,10 +66,8 @@ function prenotazioniUser() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data, status) {
-            console.log(data)
             for (var i = 0; i < data.length; i++) {
-                
-                $("#resultDivUserPage").append("<br/><div>" + "Camera:" + data[i].camera + "Periodo:" + data[i].periodo + "</div>");
+                $("#resultDivUserPage").append("<br/><div>" + "Camera:" + data[i].tipologia /*+ "Periodo:" + data[i].periodo*/ + "</div>");
             }
         },
         error: function (error, status) {
@@ -88,7 +86,7 @@ function prenotazioniAdmin() {
         dataType: "json",
         success: function (data, status) {
             for (var i = 0; i < data.length; i++) {
-                $("#listaPrenotazioni").append("<br/><div>" + "Utente:" + data[i].utente + "Camera:" + data[i].camera + "Periodo:" + data[i].periodo + "</div>");
+                $("#listaPrenotazioni").append("<br/><div>" + "Utente:" + data[i].utente + "Camera:" + data[i].tipologia +/* "Periodo:" + data[i].periodo +*/ "</div>");
             }
         },
         error: function (error, status) {
@@ -129,7 +127,7 @@ function elencoPeriodi() {
             success: function (data, status) {
                 for (var i = 0; i < data.length; i++) {
                     console.log(data[i])
-                     $("#camere").append("<option value=" + data[i].camera + ">" + data[i].camera + "</option>")
+                    $("#tipologia").append("<option value=" + data[i].tipologia + ">" + data[i].tipologia + "</option>")
                 }
             },
             error: function (error, status) {
@@ -141,7 +139,7 @@ function elencoPeriodi() {
         });
     }
     $(document).ready(function() {
-    elencoPeriodi();
+    /*elencoPeriodi();*/
     elencoCamere();
     });
 

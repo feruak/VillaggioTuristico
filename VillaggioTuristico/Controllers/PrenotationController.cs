@@ -20,13 +20,12 @@ namespace VillaggioTuristico.Controllers
             this.repository = repository;
         }
 
-        [HttpPost]
+        [HttpPost ("InsertPrenotation")]
         public async Task<IActionResult> Post([FromBody] PrenotationModel model)
         {
             Prenotazione prenotation = new Prenotazione();
             prenotation.Utente = User.Identity.Name;
-            prenotation.Camera = int.Parse(model.Camera);
-            prenotation.Periodo = int.Parse(model.Periodo);
+            prenotation.Tipologia = model.Tipologia;
 
             this.repository.InsertPrenotation(prenotation);
             return Ok();
@@ -43,8 +42,8 @@ namespace VillaggioTuristico.Controllers
                 {
                     Id = p.ID,
                     Utente = p.Utente,
-                    Camera = p.Camera.ToString(),
-                    Periodo = p.Periodo.ToString()
+                    Tipologia = p.Tipologia
+                    //Periodo = p.Periodo.ToString()
                 });
             return (model);
         }
@@ -60,8 +59,8 @@ namespace VillaggioTuristico.Controllers
                 {
                     Id = p.ID,
                     Utente = p.Utente,
-                    Camera = p.Camera.ToString(),
-                    Periodo = p.Periodo.ToString()
+                    Tipologia=p.Tipologia
+                    //Periodo = p.Periodo.ToString()
                 });
             return (model);
         }
