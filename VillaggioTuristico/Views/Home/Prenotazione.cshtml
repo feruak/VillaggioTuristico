@@ -6,39 +6,22 @@
 @using Microsoft.AspNetCore.Identity
 @using VillaggioTuristico.Entities
 @inject SignInManager<User> SignInManager
-        @*<div>
-            <label for="periodi">Scegli un periodo:</label>
-             <select name="periodi" id="periodi">
-            </select><br/>
-            <label for="camere">Scegli una camera:</label>
-             <select name="camere" id="camere">
-            </select><br/>
 
-            <button onclick="insertPrenotation()" class="btn btn-primary">Prenota</button>
-        </div>*@
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-6 p-3 m-3 bg-light border border-secondary rounded shadow">
+            <h1 class="text-center">Prenotazione</h1>
+            <form style="text-align:center">
+                <div class="form-group">
 
-
-         <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="col-sm-6 p-3 m-3 bg-light border border-secondary rounded shadow">
-                <h1 class="text-center">Prenotazione</h1>
-                <form style="text-align:center">
-                    <div class="form-group">
-
-                        @*<input type="text" id="tipologia"><br>*@
-                        <label for="prenotationCamera">Seleziona tipo di camera:</label>
+                    <label for="prenotationCamera">Seleziona tipo di camera:</label>
                    
-                        <select name="tipologia" id="tipologia"> </select><br/>
-                    </div>
-                    @*<div class="form-group">
-                        <label for="prenotationPeriodo">Periodo:</label>
-                        
-                        <select name="periodi" id="periodi"> </select><br/>
-                    </div>*@
-                    <input type="submit" class="btn btn-success btn-lg" onclick="insertPrenotation()" value="Prenota" />
-                </form>
+                    <select name="tipologia" id="tipologia"> </select><br/>
+                </div>
+                <input type="submit" class="btn btn-success btn-lg" onclick="insertPrenotation()" value="Prenota" />
+            </form>
 
-            </div>
         </div>
-
     </div>
+</div>
+

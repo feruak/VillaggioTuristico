@@ -1,12 +1,12 @@
-﻿function prenotazioniAdmin() {
+﻿function prenotazioniUser() {
     $.ajax({
         method: "GET",
-        url: "/api/Prenotation/ListaPrenotazioniAdmin",
+        url: "/api/Prenotation/ListaPrenotazioni",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data, status) {
             for (var i = 0; i < data.length; i++) {
-                $("#listaPrenotazioni").append("<br/><div>" + "Utente:" + data[i].utente + "Camera:" + data[i].tipologia +/* "Periodo:" + data[i].periodo +*/ "</div>");
+                $("#resultDivUserPage").append("<br/><div>" + "Camera:" + data[i].tipologia /*+ "Periodo:" + data[i].periodo*/ + "</div>");
             }
         },
         error: function (error, status) {
@@ -16,4 +16,4 @@
         },
         always: function () { }
     });
-    };
+};

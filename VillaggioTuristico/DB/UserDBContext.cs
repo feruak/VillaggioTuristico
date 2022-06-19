@@ -13,7 +13,6 @@ namespace VillaggioTuristico.DB
         }
 
         public DbSet<Prenotazione> ElencoPrenotazioni { get; set; }
-        public DbSet<ElencoPeriodi> ElencoPeriodi { get; set; }
 
         public DbSet<ElencoCamere> ElencoCamere { get; set; }
 

@@ -20,6 +20,7 @@ namespace VillaggioTuristico.Controllers
             this.repository = repository;
         }
 
+        //API di tipo Get per ricevere dal DB la lista delle camere 
         [HttpGet]
         public async Task<List<CameraModel>> Camere()
         {

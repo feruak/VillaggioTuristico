@@ -21,55 +21,34 @@ namespace VillaggioTuristico.Controllers
             this.repository = repository;
         }
 
+        //API di tipo Post per prendere i dati della prenotazione dal front-end e inviarli al DB
         [HttpPost ("InsertPrenotation")]
         public async Task<IActionResult> Post([FromBody] PrenotationModel model)
         {
             Prenotazione prenotation = new Prenotazione();
             prenotation.Utente = User.Identity.Name;
-            prenotation.Tipologia = model.Tipologia;
-
-            ElencoCamere elencoCamere = new ElencoCamere();
-
-            
+            prenotation.Tipologia = model.Tipologia;       
 
             this.repository.InsertPrenotation(prenotation);
             
             return Ok();
         }
 
+        //API di tipo Get per ricevere dal DB la lista delle prenotazioni eseguite dallo user loggaro
         [HttpGet("ListaPrenotazioni")]
         public async Task<List<PrenotationModel>> Prenotation()
         {
             string username = User.Identity.Name;
-            List<Prenotazione> prenotations = this.repository.GetPrenotation();
-            prenotations = prenotations.Where(p => p.Utente == username).ToList();
-            List<PrenotationModel> model = new List<PrenotationModel>();
-            foreach (Prenotazione p in prenotations)
-                model.Add(new PrenotationModel()
-                {
-                    Id = p.ID,
-                    Utente = p.Utente,
-                    Tipologia = p.Tipologia
-                    //Periodo = p.Periodo.ToString()
-                });
-            return (model);
+            List<PrenotationModel> prenotations = this.repository.GetPrenotationUser(username);
+            return (prenotations);
         }
 
+        //API di tipo Get per ricevere dal DB la lista di tutte le prenotazioni
         [HttpGet("ListaPrenotazioniAdmin")]
         public async Task<List<PrenotationModel>> AdminPrenotation()
         {
-            List<Prenotazione> prenotations = this.repository.GetPrenotation();
-            prenotations = prenotations.ToList();
-            List<PrenotationModel> model = new List<PrenotationModel>();
-            foreach (Prenotazione p in prenotations)
-                model.Add(new PrenotationModel()
-                {
-                    Id = p.ID,
-                    Utente = p.Utente,
-                    Tipologia=p.Tipologia
-                    //Periodo = p.Periodo.ToString()
-                });
-            return (model);
+            List<PrenotationModel> prenotations = this.repository.GetPrenotationAdmin();
+            return (prenotations);
         }
     }
 }
