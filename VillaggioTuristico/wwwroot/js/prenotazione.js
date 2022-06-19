@@ -10,7 +10,6 @@ function insertPrenotation() {
         data: JSON.stringify(body),
         dataType: "json",
         success: function (data, status) {
-            console.log(data);
             console.log(body);
             console.log(data);
             console.log(status);

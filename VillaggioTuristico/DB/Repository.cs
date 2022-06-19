@@ -74,7 +74,7 @@ namespace VillaggioTuristico.DB
                     camereTerminate = true;
                 }
             };
-            if(camereTerminate == false)
+            if (camereTerminate == false)
             {
                 try
                 {
@@ -85,7 +85,7 @@ namespace VillaggioTuristico.DB
                 catch (Exception ex)
                 {
                 }
-            }
+            }         
             
         }
     }

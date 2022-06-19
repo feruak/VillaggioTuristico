@@ -23,7 +23,7 @@ namespace VillaggioTuristico.Controllers
 
         //API di tipo Post per prendere i dati della prenotazione dal front-end e inviarli al DB
         [HttpPost ("InsertPrenotation")]
-        public async Task<IActionResult> Post([FromBody] PrenotationModel model)
+        public async Task<IActionResult> InserPrenotation([FromBody] PrenotationModel model)
         {
             Prenotazione prenotation = new Prenotazione();
             prenotation.Utente = User.Identity.Name;
