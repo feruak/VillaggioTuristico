@@ -1,13 +1,19 @@
-﻿function prenotazioniUser() {
+﻿// Stampa prenotazioni user, gestita l'eventualità di più click sul bottone
+$('#prenotazioniUser').one('click', function () {
     $.ajax({
         method: "GET",
         url: "/api/Prenotation/ListaPrenotazioni",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data, status) {
-            for (var i = 0; i < data.length; i++) {
-                $("#resultDivUserPage").append("<br/><div>" + "Camera:" + data[i].tipologia /*+ "Periodo:" + data[i].periodo*/ + "</div>");
-            }
+            data.forEach(element => {
+                document.querySelector('#resultDivUserPage').innerHTML += `
+                    <tr>
+                        <td>${element.id}</td>
+                        <td>${element.tipologia}</td>
+                    </tr>
+                `
+            });
         },
         error: function (error, status) {
             console.log(error);
@@ -16,4 +22,4 @@
         },
         always: function () { }
     });
-};
+});

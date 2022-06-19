@@ -63,10 +63,10 @@ namespace VillaggioTuristico.DB
             camere = camere.Where(camera => camera.Tipologia == prenotation.Tipologia).ToList();
             foreach (ElencoCamere camera in camere)
             {
-                camera.Tipologia = prenotation.Tipologia;
-                camera.Camera = camera.Camera - 1;
                 if(camera.Camera > 0)
                 {
+                    camera.Tipologia = prenotation.Tipologia;
+                    camera.Camera = camera.Camera - 1;
                     this.DBContext.ElencoCamere.Update(camera);
                 }
                 else
