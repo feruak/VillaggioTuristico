@@ -123,6 +123,14 @@ namespace VillaggioTuristico.Controllers
                     if (result.Succeeded)
                     {
 
+                        //if (User.IsInRole("Admin"))
+                        //{
+                        //    return Redirect("AdminPage");
+                        //}
+                        //else if (!User.IsInRole("Admin"))
+                        //{
+                        //    return Redirect("UserPage");
+                        //}
                     }
                 }
             }
@@ -130,7 +138,7 @@ namespace VillaggioTuristico.Controllers
             {
 
             }
-                return Redirect("Login");
+            return Redirect("Login");
         }
 
         // Logout
