@@ -64,10 +64,7 @@ namespace VillaggioTuristico.Controllers
         {
             return View();
         }
-        public IActionResult AreaUtente()
-        {
-            return View();
-        }
+        
         public IActionResult Registrazione()
         {
             return View();
@@ -155,7 +152,7 @@ namespace VillaggioTuristico.Controllers
             catch (Exception ex)
             {
             }
-            return Redirect("Index");
+            return Redirect("Login");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
